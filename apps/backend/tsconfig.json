@@ -1,0 +1,19 @@
+{
+  "extends": "tsconfig/nestjs.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/config/*": ["./src/config/*"],
+      "@/decorators/*": ["./src/common/decorators/*"],
+      "@/exception_filters/*": ["./src/common/exception_filters/*"],
+      "@/guards/*": ["./src/common/guards/*"],
+      "@/interfaces/*": ["./src/common/interfaces/*"],
+      "@/modules/*": ["./src/modules/*"],
+      "@/strategies/*": ["./src/common/strategies/*"],
+      "@/libs/*": ["./src/common/libs/*"],
+      "@/utils/*": ["./src/common/utils/*"]
+    }
+  }
+}
