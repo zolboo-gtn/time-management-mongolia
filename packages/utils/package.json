@@ -1,0 +1,27 @@
+{
+  "name": "utils",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "eslint": "eslint \"src/**/*.ts\"",
+    "prettier": "prettier --write \"src/**/*.ts\""
+  },
+  "dependencies": {
+    "tailwind-merge": "^1.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.9",
+    "tsconfig": "workspace:*",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  }
+}
