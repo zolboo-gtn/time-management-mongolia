@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const commonSchema = z.object({
   APP_ENV: z.enum(["development", "production", "staging"]),
-  PORT: z.number().default(3001),
+  PORT: z.coerce.number().optional(),
 });
 const developmentSchema = z.object({});
 const productionSchema = z.object({});

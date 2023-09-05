@@ -1,6 +1,8 @@
+import { type ConfigFactory } from "@nestjs/config";
+
 import { Schemas } from "./schema";
 
-export const configuration = () => {
+export const configuration: ConfigFactory = () => {
   return {
     app: {
       port: process.env.PORT,
@@ -8,16 +10,19 @@ export const configuration = () => {
   };
 };
 
-export const validate = (env: Record<string, any>) => {
-  const appEnv = Schemas["common"].shape.APP_ENV.safeParse(env.APP_ENV);
-
+export const validate = (config: Record<string, unknown>) => {
+  const appEnv = Schemas["common"].shape.APP_ENV.safeParse(config.APP_ENV);
   if (!appEnv.success) {
-    return appEnv.error;
+    for (const error of appEnv.error.errors) {
+      console.error(JSON.stringify(error));
+    }
+    // TODO: ???
+    throw Error("INVALID_CONFIG");
   }
 
   const schema = Schemas["common"].merge(Schemas[appEnv.data]);
 
-  const result = schema.safeParse(env);
+  const result = schema.safeParse(config);
 
   if (!result.success) {
     for (const error of result.error.errors) {
