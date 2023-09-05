@@ -8,6 +8,9 @@ const bootstrap = async () => {
   const trpc = app.get(TrpcRouter);
   trpc.applyMiddleware(app);
 
-  await app.listen(3001);
+  const configService = app.get("ConfigService");
+  const port = configService.get("app.port");
+
+  await app.listen(port);
 };
 bootstrap();
