@@ -1,6 +1,9 @@
 import "./globals.css";
+import "ui/styles.css";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "ui";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +15,11 @@ export const metadata: Metadata = {
 const RootLayout: React.Layout = ({ children }) => {
   return (
     <html>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 };
