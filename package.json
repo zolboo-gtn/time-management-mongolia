@@ -5,9 +5,9 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "backend:build": "pnpm --filter backend build",
+    "backend:build": "turbo run build --filter=backend",
     "backend:start": "pnpm --filter backend start:prod",
-    "frontend:build": "pnpm --filter frontend build",
+    "frontend:build": "turbo run build --filter=frontend",
     "frontend:start": "pnpm --filter frontend start"
   },
   "devDependencies": {
